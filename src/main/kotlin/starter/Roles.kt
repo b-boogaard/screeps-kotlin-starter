@@ -12,7 +12,6 @@ enum class Role {
 }
 
 fun Creep.upgrade(controller: StructureController) {
-
     if (store[RESOURCE_ENERGY] == 0) {
         val sources = room.find(FIND_SOURCES)
         if (harvest(sources[0]) == ERR_NOT_IN_RANGE) {

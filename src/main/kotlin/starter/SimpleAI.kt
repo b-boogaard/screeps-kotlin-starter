@@ -68,11 +68,7 @@ fun gameLoop() {
 
 }
 
-private fun spawnCreeps(
-        creeps: Array<Creep>,
-        spawn: StructureSpawn
-) {
-
+private fun spawnCreeps(creeps: Array<Creep>, spawn: StructureSpawn) {
     val body = arrayOf<BodyPartConstant>(WORK, CARRY, MOVE)
 
     if (spawn.room.energyAvailable < body.sumBy { BODYPART_COST[it]!! }) {
