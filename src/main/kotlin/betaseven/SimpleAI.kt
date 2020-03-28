@@ -1,4 +1,4 @@
-package starter
+package betaseven
 
 
 import screeps.api.*

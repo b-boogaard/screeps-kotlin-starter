@@ -1,4 +1,4 @@
-package starter
+package betaseven
 
 import screeps.api.*
 import screeps.api.structures.StructureController
@@ -8,7 +8,8 @@ enum class Role {
     UNASSIGNED,
     HARVESTER,
     BUILDER,
-    UPGRADER
+    UPGRADER,
+    DYNAMIC,
 }
 
 fun Creep.upgrade(controller: StructureController) {
@@ -69,7 +70,7 @@ fun Creep.harvest(fromRoom: Room = this.room, toRoom: Room = this.room) {
     } else {
         val targets = toRoom.find(FIND_MY_STRUCTURES)
             .filter { (it.structureType == STRUCTURE_EXTENSION || it.structureType == STRUCTURE_SPAWN) }
-            .filter { it.unsafeCast<StoreOwner>().store[RESOURCE_ENERGY]!! < it.unsafeCast<StoreOwner>().store.getCapacity() }
+            .filter { Structures.needsEnergy(it) }
 
         if (targets.isNotEmpty()) {
             if (transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {

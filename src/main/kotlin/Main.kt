@@ -1,6 +1,6 @@
 
 
-import starter.gameLoop
+import betaseven.gameLoop
 
 /**
  * Entry point
